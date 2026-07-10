@@ -1,9 +1,9 @@
 ---
-title: "转专业数学笔记"
+title: "转专业数学"
 published: 2026-04-04
-description: "转专业数学考试备考笔记"
+description: ""
 tags: ["概率论", "线性代数", "机器学习"]
-category: "数学"
+category: "技术"
 draft: false
 ---
 

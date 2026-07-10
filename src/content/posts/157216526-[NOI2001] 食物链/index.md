@@ -1,39 +1,61 @@
 ---
 title: "[NOI2001] 食物链"
 published: 2026-01-21
-description: "并查集经典题目：食物链问题解析"
+description: ""
 tags: ["算法", "c++", "c语言"]
-category: "算法"
+category: "技术"
 draft: false
 ---
 
-- 
+## [NOI2001] 食物链
+
+
+### 题目描述
 
 
 动物王国中有三类动物 A,B,CA,B,CA,B,C，这三类动物的食物链构成了有趣的环形。AAA 吃 BBB，BBB 吃 CCC，CCC 吃 AAA。
 
+
 现有 NNN 个动物，以 1∼N1 \sim N1∼N 编号。每个动物都是 A,B,CA,B,CA,B,C 中的一种，但是我们并不知道它到底是哪一种。
 
+
 有人用两种说法对这 NNN 个动物所构成的食物链关系进行描述：
+
 
 第一种说法是 `1 X Y`，表示 XXX 和 YYY 是同类。
 - 第二种说法是 `2 X Y`，表示 XXX 吃 YYY。
 
+
 此人对 NNN 个动物，用上述两种说法，一句接一句地说出 KKK 句话，这 KKK 句话有的是真的，有的是假的。当一句话满足下列三条之一时，这句话就是假话，否则就是真话。
+
 
 - 当前的话与前面的某些真的话冲突，就是假话；
 - 当前的话中 XXX 或 YYY 比 NNN 大，就是假话；
 - 当前的话表示 XXX 吃 XXX，就是假话。
 
+
 你的任务是根据给定的 NNN 和 KKK 句话，输出假话的总数。
+
+
+### 输入格式
 
 
 第一行两个整数，N,KN,KN,K，表示有 NNN 个动物，KKK 句话。
 
+
 第二行开始每行一句话。格式见题目描述与样例。
 
 
+### 输出格式
+
+
 一行，一个整数，表示假话的总数。
+
+
+### 输入输出样例 #1
+
+
+#### 输入 #1
 
 
 `100 7
@@ -47,15 +69,23 @@ draft: false
 
 `
 
+#### 输出 #1
 
+
+```
 `3
 
 `
+```
 
+
+### 说明/提示
 
 对于全部数据，1≤N≤5×1041\le N\le 5 \times 10^41≤N≤5×104，1≤K≤1051\le K \le 10^51≤K≤105。
 
-![]\(https://i-blog.csdnimg.cn/direct/ffdab4ee181d4a398175342670522ed6.jpeg)
+
+![](https://i-blog.csdnimg.cn/direct/ffdab4ee181d4a398175342670522ed6.jpeg)
+
 
 `#include<iostream>
 #include<cstdio> 
@@ -102,8 +132,10 @@ int main()
 	printf("%d",ans);return 0;
 }
 `
-![]\(https://i-blog.csdnimg.cn/direct/a70b2b928f3442929e74b4893cabc2cd.jpeg)
+![](https://i-blog.csdnimg.cn/direct/a70b2b928f3442929e74b4893cabc2cd.jpeg)
 
+
+```
 `#include<bits/stdc++.h>
 using namespace std;
 const int maxn = 5e4 + 233;
@@ -148,3 +180,4 @@ int main()
 }
  
 `
+```
