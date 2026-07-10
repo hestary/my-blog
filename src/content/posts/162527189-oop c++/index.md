@@ -1,9 +1,9 @@
 ---
-title: "oop c++"
+title: "C++ 面向对象编程"
 published: 2026-07-03
-description: ""
+description: "C++ OOP 核心概念与实践"
 tags: ["c++", "开发语言"]
-category: "当前文章被以下社区和专栏收录："
+category: "C++"
 draft: false
 ---
 

@@ -1,9 +1,9 @@
 ---
 title: "[NOI2001] 食物链"
 published: 2026-01-21
-description: ""
+description: "并查集经典题目：食物链问题解析"
 tags: ["算法", "c++", "c语言"]
-category: "当前文章被以下社区和专栏收录："
+category: "算法"
 draft: false
 ---
 

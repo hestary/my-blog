@@ -1,9 +1,9 @@
 ---
-title: "math公式"
+title: "数学公式"
 published: 2026-02-05
-description: ""
+description: "常用数学公式整理"
 tags: ["c++", "数学", "算法"]
-category: "当前文章被以下社区和专栏收录："
+category: "数学"
 draft: false
 ---
 

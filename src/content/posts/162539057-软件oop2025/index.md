@@ -1,9 +1,9 @@
 ---
-title: "软件oop2025"
+title: "软件OOP 2025"
 published: 2026-07-03
-description: ""
+description: "软件工程面向对象编程课程笔记"
 tags: ["javascript", "开发语言", "ecmascript"]
-category: "当前文章被以下社区和专栏收录："
+category: "开发"
 draft: false
 ---
 

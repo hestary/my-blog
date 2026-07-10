@@ -1,9 +1,9 @@
 ---
-title: "k-子集和最大公约数问题[CCPC 2025 哈尔滨站]"
+title: "k-子集和最大公约数问题"
 published: 2026-03-03
-description: ""
+description: "CCPC 2025 哈尔滨站题目解析"
 tags: ["c++", "c语言", "算法", "数学"]
-category: "当前文章被以下社区和专栏收录："
+category: "算法"
 draft: false
 ---
 

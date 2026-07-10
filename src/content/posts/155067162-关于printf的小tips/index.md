@@ -1,9 +1,9 @@
 ---
 title: "关于printf的小tips"
 published: 2025-11-20
-description: ""
+description: "printf格式控制符的flag、width、precision详解"
 tags: ["c++"]
-category: "当前文章被以下社区和专栏收录："
+category: "C"
 draft: false
 ---
 
