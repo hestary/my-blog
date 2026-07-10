@@ -186,7 +186,15 @@ B(int x) : A(x) {}
 #### 4. const 关键字可以出现在函数的什么位置，都起何种作用（至少 3 种）？
 
 
-位置示例作用函数末尾（成员函数）`void f() const;`承诺不修改对象数据成员；可被 const 对象调用参数列表`void f(const int& x)`保证函数内部不修改参数值返回类型`const int& f()`返回的引用指向的对象不可被修改参数中的指针指向`void f(const char* p)`指针指向的内容不可变参数中的指针本身`void f(char* const p)`指针本身不可变
+| 位置 | 示例 | 作用 |
+| --- | --- | --- |
+| 函数末尾（成员函数） | void f() const; | 承诺不修改对象数据成员；可被 const 对象调用 |
+| 参数列表 | void f(const int& x) | 保证函数内部不修改参数值 |
+| 返回类型 | const int& f() | 返回的引用指向的对象不可被修改 |
+| 参数中的指针指向 | void f(const char* p) | 指针指向的内容不可变 |
+| 参数中的指针本身 | void f(char* const p) | 指针本身不可变 |
+
+
 ---
 
 
@@ -198,18 +206,18 @@ B(int x) : A(x) {}
 
 `class A {
 public:
-A() {}
+    A() {}
 private:
-A(const A&);              // 私有拷贝构造函数
-A& operator=(const A&);   // 私有赋值运算符
+    A(const A&);              // 私有拷贝构造函数
+    A& operator=(const A&);   // 私有赋值运算符
 };
 
 // C++11 推荐写法：
 class A {
 public:
-A() = default;
-A(const A&) = delete;
-A& operator=(const A&) = delete;
+    A() = default;
+    A(const A&) = delete;
+    A& operator=(const A&) = delete;
 };
 `
 
@@ -235,14 +243,28 @@ A& operator=(const A&) = delete;
 #### 7. 分析全局对象、局部动态对象、局部静态对象、静态数据成员各自的生命周期？
 
 
-对象类型创建时机销毁时机生命周期**全局对象**`main()` 执行前`main()` 结束后整个程序运行期**局部动态对象**（`new`）执行 `new` 时执行 `delete` 时（或永不）由程序员控制**局部静态对象**第一次执行到定义语句时`main()` 结束后从首次构造到程序结束**静态数据成员**`main()` 执行前`main()` 结束后整个程序运行期，所有对象共享
+| 对象类型 | 创建时机 | 销毁时机 | 生命周期 |
+| --- | --- | --- | --- |
+| 全局对象 | main() 执行前 | main() 结束后 | 整个程序运行期 |
+| 局部动态对象（new） | 执行 new 时 | 执行 delete 时（或永不） | 由程序员控制 |
+| 局部静态对象 | 第一次执行到定义语句时 | main() 结束后 | 从首次构造到程序结束 |
+| 静态数据成员 | main() 执行前 | main() 结束后 | 整个程序运行期，所有对象共享 |
+
+
 ---
 
 
 #### 8. 值的动态、空间的动态、类型的动态、代码的动态体现了程序的柔性思维，请尝试分析 C++ 分别用哪些语法支持了上述关系？
 
 
-维度含义C++ 语法支持**值的动态**程序运行时变量的值可变变量赋值、指针/引用的重新绑定**空间的动态**运行时按需分配/释放内存`new`/`delete`、`malloc`/`free`、STL 容器（`vector` 等自动扩容）**类型的动态**运行时根据实际类型决定行为虚函数 + 继承（多态）、`dynamic_cast`、RTTI（`typeid`）**代码的动态**运行时决定执行哪段代码虚函数（vtable 分发）、函数指针、`std::function` + lambda、函数对象
+| 维度 | 含义 | C++ 语法支持 |
+| --- | --- | --- |
+| 值的动态 | 程序运行时变量的值可变 | 变量赋值、指针/引用的重新绑定 |
+| 空间的动态 | 运行时按需分配/释放内存 | new/delete、malloc/free、STL 容器（vector 等自动扩容） |
+| 类型的动态 | 运行时根据实际类型决定行为 | 虚函数 + 继承（多态）、dynamic_cast、RTTI（typeid） |
+| 代码的动态 | 运行时决定执行哪段代码 | 虚函数（vtable 分发）、函数指针、std::function + lambda、函数对象 |
+
+
 四种动态层层递进：值的动态 → 空间的动态 → 类型的动态 → 代码的动态，体现了程序从"写死"到"灵活适配"的柔性设计。
 
 
@@ -302,10 +324,10 @@ A& operator=(const A&) = delete;
 `// ========== 目标接口（导弹端）==========
 class Missile {
 public:
-virtual ~Missile() = default;
-virtual void launch() = 0;              // 发射
-virtual void reportStatus() = 0;        // 数据回传
-virtual string type() const = 0;        // 型号标识
+    virtual ~Missile() = default;
+    virtual void launch() = 0;              // 发射
+    virtual void reportStatus() = 0;        // 数据回传
+    virtual string type() const = 0;        // 型号标识
 };
 
 class Tomahawk : public Missile { /* 战斧系列 */ };
@@ -315,10 +337,10 @@ class Perseus  : public Missile { /* 比音系列 */ };
 // ========== 适配者接口（战斗机端）==========
 class Fighter {
 public:
-virtual ~Fighter() = default;
-virtual void mount(Missile&) = 0;       // 机械挂载
-virtual void fire() = 0;                // 开火
-virtual string model() const = 0;
+    virtual ~Fighter() = default;
+    virtual void mount(Missile&) = 0;       // 机械挂载
+    virtual void fire() = 0;                // 开火
+    virtual string model() const = 0;
 };
 
 class F16 : public Fighter { /* ... */ };
@@ -330,31 +352,31 @@ class Su30 : public Fighter { /* ... */ };
 // ========== 适配器（核心）==========
 class UniversalAdapter {
 public:
-// 机械挂载：将任意导弹挂到任意战机上
-virtual bool mountOn(Fighter& f, Missile& m) = 0;
+    // 机械挂载：将任意导弹挂到任意战机上
+    virtual bool mountOn(Fighter& f, Missile& m) = 0;
 
-// 数据监测：读取导弹状态
-virtual void monitor(Missile& m) = 0;
+    // 数据监测：读取导弹状态
+    virtual void monitor(Missile& m) = 0;
 
-// 控制功能：发送发射指令
-virtual void controlLaunch(Fighter& f, Missile& m) = 0;
+    // 控制功能：发送发射指令
+    virtual void controlLaunch(Fighter& f, Missile& m) = 0;
 
-virtual ~UniversalAdapter() = default;
+    virtual ~UniversalAdapter() = default;
 };
 
 // ========== 具体适配器 ==========
 class ConcreteAdapter : public UniversalAdapter {
 public:
-bool mountOn(Fighter& f, Missile& m) override {
-f.mount(m);
-return true;
-}
-void monitor(Missile& m) override {
-m.reportStatus();
-}
-void controlLaunch(Fighter& f, Missile& m) override {
-m.launch();
-}
+    bool mountOn(Fighter& f, Missile& m) override {
+        f.mount(m);
+        return true;
+    }
+    void monitor(Missile& m) override {
+        m.reportStatus();
+    }
+    void controlLaunch(Fighter& f, Missile& m) override {
+        m.launch();
+    }
 };
 `
 **设计要点：**
@@ -385,13 +407,13 @@ m.launch();
 
 
 `class A{
-int * p;
+    int * p;
 public:
-A(int k=9){p = new int[k];}
+    A(int k=9){p = new int[k];}
 };
 void main(){
-A * s = new A;
-delete s;
+    A * s = new A;
+    delete s;
 }
 `
 **错误：**
@@ -405,12 +427,12 @@ delete s;
 
 
 `class A {
-int *p;
+    int *p;
 public:
-A(int k = 9) : p(new int[k]) {}
-~A() { delete[] p; }
-A(const A&) = delete;
-A& operator=(const A&) = delete;
+    A(int k = 9) : p(new int[k]) {}
+    ~A() { delete[] p; }
+    A(const A&) = delete;
+    A& operator=(const A&) = delete;
 };
 `
 
@@ -422,11 +444,11 @@ A& operator=(const A&) = delete;
 
 ```
 `class A{
-int val;
+    int val;
 public:
-void display() const {set();}   // 错误！const函数调用非const函数
-void set(){cout<<val<<endl;}
-A(int = 0);
+    void display() const {set();}   // 错误！const函数调用非const函数
+    void set(){cout<<val<<endl;}
+    A(int = 0);
 };
 `
 ```
@@ -449,15 +471,15 @@ A(int = 0);
 
 
 `class A{
-int vala;
+    int vala;
 public:
-virtual void set()=0;   // 纯虚函数，A是抽象类
+    virtual void set()=0;   // 纯虚函数，A是抽象类
 };
 class B: public A{
-A s;        // 错误！抽象类A不能实例化对象作为成员
-int valb;
+    A s;        // 错误！抽象类A不能实例化对象作为成员
+    int valb;
 public:
-void set(){cin>>valb;}
+    void set(){cin>>valb;}
 };
 `
 **错误：** A 声明了纯虚函数 `set()=0`，是抽象类，不能实例化。B 中的成员 `A s;` 试图直接创建 A 的对象，这是一个编译错误。抽象类只能作为指针或引用的类型。
@@ -473,16 +495,16 @@ void set(){cin>>valb;}
 
 
 `class A{
-int x;
+    int x;
 public:
-A(int s = 0){ x = s; }
-static void m(){cout<<x<<endl;}  // 错误1
+    A(int s = 0){ x = s; }
+    static void m(){cout<<x<<endl;}  // 错误1
 };
 class B :public A {
-int y;
+    int y;
 public:
-B(int t = 0):A(t),y(t){}
-void n(){cout<<x<<y<<endl;}      // 错误2
+    B(int t = 0):A(t),y(t){}
+    void n(){cout<<x<<y<<endl;}      // 错误2
 };
 `
 **错误 1：** `static void m()` 是静态成员函数，没有 `this` 指针，不能访问非静态数据成员 `x`。静态函数中只能访问静态成员。
@@ -495,12 +517,12 @@ void n(){cout<<x<<y<<endl;}      // 错误2
 
 
 `class A {
-int x;
+    int x;
 public:
-A(int s = 0) { x = s; }
-static void m() { /* 不能访问 x */ }    // 去掉对x的访问
+    A(int s = 0) { x = s; }
+    static void m() { /* 不能访问 x */ }    // 去掉对x的访问
 protected:
-int getX() const { return x; }           // 提供 protected 访问接口
+    int getX() const { return x; }           // 提供 protected 访问接口
 };
 
 // B::n() 改为：
@@ -520,48 +542,48 @@ void n() { cout << getX() << y << endl; }
 using namespace std;
 
 class Set {
-static int nextId;       // 全局编号生成器
-vector<int> data;        // 存储元素
+    static int nextId;       // 全局编号生成器
+    vector<int> data;        // 存储元素
 
 public:
-const int id;            // 集合编号（只读）
+    const int id;            // 集合编号（只读）
 
-// 默认构造函数：空集合，自动分配编号
-Set() : id(++nextId) {}
+    // 默认构造函数：空集合，自动分配编号
+    Set() : id(++nextId) {}
 
-// 拷贝构造函数：复制全部元素但分配新的唯一 id
-Set(const Set& other) : id(++nextId), data(other.data) {}
+    // 拷贝构造函数：复制全部元素但分配新的唯一 id
+    Set(const Set& other) : id(++nextId), data(other.data) {}
 
-// 添加元素
-void add(int val) {
-data.push_back(val);
-}
+    // 添加元素
+    void add(int val) {
+        data.push_back(val);
+    }
 
-// 集合并：a = a + b（不去重）
-Set operator+(const Set& other) const {
-Set result;
-result.data = this->data;
-result.data.insert(result.data.end(),
-other.data.begin(), other.data.end());
-return result;
-}
+    // 集合并：a = a + b（不去重）
+    Set operator+(const Set& other) const {
+        Set result;
+        result.data = this->data;
+        result.data.insert(result.data.end(),
+                           other.data.begin(), other.data.end());
+        return result;
+    }
 
-// 移动赋值（支持 a = a + b 的链式调用）
-Set& operator=(Set&& other) {
-if (this != &other) {
-data = move(other.data);
-}
-return *this;
-}
+    // 移动赋值（支持 a = a + b 的链式调用）
+    Set& operator=(Set&& other) {
+        if (this != &other) {
+            data = move(other.data);
+        }
+        return *this;
+    }
 
-// 友元输出运算符
-friend ostream& operator<<(ostream& os, const Set& s) {
-os << "Set#" << s.id << " { ";
-for (int v : s.data)
-os << v << " ";
-os << "}";
-return os;
-}
+    // 友元输出运算符
+    friend ostream& operator<<(ostream& os, const Set& s) {
+        os << "Set#" << s.id << " { ";
+        for (int v : s.data)
+            os << v << " ";
+        os << "}";
+        return os;
+    }
 };
 
 int Set::nextId = 0;
@@ -595,43 +617,43 @@ using namespace std;
 // 抽象组件：统一的组织单元接口
 class OrgUnit {
 protected:
-string name;
+    string name;
 public:
-OrgUnit(const string& n) : name(n) {}
-virtual ~OrgUnit() = default;
-virtual void print(int depth = 0) const = 0;  // 递归打印，depth 控制缩进
-virtual void add(OrgUnit*) {}                  // 叶子节点默认空实现
-string getName() const { return name; }
+    OrgUnit(const string& n) : name(n) {}
+    virtual ~OrgUnit() = default;
+    virtual void print(int depth = 0) const = 0;  // 递归打印，depth 控制缩进
+    virtual void add(OrgUnit*) {}                  // 叶子节点默认空实现
+    string getName() const { return name; }
 };
 
 // 叶子节点：职能部门（不再下设子部门）
 class Department : public OrgUnit {
 public:
-Department(const string& n) : OrgUnit(n) {}
-void print(int depth = 0) const override {
-cout << string(depth * 4, ' ') << "[部门] " << name << endl;
-}
+    Department(const string& n) : OrgUnit(n) {}
+    void print(int depth = 0) const override {
+        cout << string(depth * 4, ' ') << "[部门] " << name << endl;
+    }
 };
 
 // 复合节点：公司/分公司（可下设子公司或部门）
 class Company : public OrgUnit {
-vector<OrgUnit*> children;
+    vector<OrgUnit*> children;
 public:
-Company(const string& n) : OrgUnit(n) {}
+    Company(const string& n) : OrgUnit(n) {}
 
-void add(OrgUnit* unit) override {
-children.push_back(unit);
-}
+    void add(OrgUnit* unit) override {
+        children.push_back(unit);
+    }
 
-void print(int depth = 0) const override {
-cout << string(depth * 4, ' ') << "[公司] " << name << endl;
-for (auto* child : children)
-child->print(depth + 1);
-}
+    void print(int depth = 0) const override {
+        cout << string(depth * 4, ' ') << "[公司] " << name << endl;
+        for (auto* child : children)
+            child->print(depth + 1);
+    }
 
-~Company() {
-for (auto* c : children) delete c;
-}
+    ~Company() {
+        for (auto* c : children) delete c;
+    }
 };
 `
 **使用示例（仅在答题纸上呈现，试题不要求 `main`）：**
@@ -648,16 +670,23 @@ hq->add(branch);
 hq->print();   // 递归输出全部组织架构
 /* 输出：
 [公司] 总公司
-[部门] 财务部
-[部门] 人力资源部
-[公司] 华东分公司
-[部门] 销售部
+    [部门] 财务部
+    [部门] 人力资源部
+    [公司] 华东分公司
+        [部门] 销售部
 */
 `
 **设计思想：**
 
 
-需求实现方式**可复用**`OrgUnit` 抽象接口统一处理公司和部门，遍历代码一份即可**可扩展**新增组织类型（如"办事处"“项目组”）只需新增派生类**可维护**Composite 模式将树形结构操作集中在 `Company` 中，职责清晰**遍历支持**通过虚函数 `print()` + 递归实现深度优先遍历
+| 需求 | 实现方式 |
+| --- | --- |
+| 可复用 | OrgUnit 抽象接口统一处理公司和部门，遍历代码一份即可 |
+| 可扩展 | 新增组织类型（如"办事处"“项目组”）只需新增派生类 |
+| 可维护 | Composite 模式将树形结构操作集中在 Company 中，职责清晰 |
+| 遍历支持 | 通过虚函数 print() + 递归实现深度优先遍历 |
+
+
 ---
 
 
@@ -681,7 +710,20 @@ A0
 **详细分析过程：**
 
 
-步骤操作count 变化输出①`new B` → 基类 A 构造0→1`A1`②B 的成员 `A a` 默认构造1→2`A2`③B() 构造函数体-`B`④`new A[2]` — 第 1 个元素2→3`A3`⑤`new A[2]` — 第 2 个元素3→4`A4`⑥`delete pa` → 虚析构，先调 ~B()-`B`⑦~B() 中 `delete[] p` 析构 A[0]4→3`A3`⑧~B() 中 `delete[] p` 析构 A[1]3→2`A2`⑨成员 `a` 析构（B 的成员，逆序）2→1`A1`⑩基类 A 部分析构1→0`A0`
+| 步骤 | 操作 | count 变化 | 输出 |
+| --- | --- | --- | --- |
+| ① | new B → 基类 A 构造 | 0→1 | A1 |
+| ② | B 的成员 A a 默认构造 | 1→2 | A2 |
+| ③ | B() 构造函数体 | - | B |
+| ④ | new A[2] — 第 1 个元素 | 2→3 | A3 |
+| ⑤ | new A[2] — 第 2 个元素 | 3→4 | A4 |
+| ⑥ | delete pa → 虚析构，先调 ~B() | - | B |
+| ⑦ | ~B() 中 delete[] p 析构 A[0] | 4→3 | A3 |
+| ⑧ | ~B() 中 delete[] p 析构 A[1] | 3→2 | A2 |
+| ⑨ | 成员 a 析构（B 的成员，逆序） | 2→1 | A1 |
+| ⑩ | 基类 A 部分析构 | 1→0 | A0 |
+
+
 **关键规律：**
 
 
@@ -716,15 +758,30 @@ B::f
 ##### 表一
 
 
-调用机制输出`s.g()`B 无 `g()`，继承 A::g()。g() 非虚，调 A::g()。g() 内调虚函数 `f()` → 动态绑定到 B::f()`B::f``t.g()`t 静态类型 A&，g() 非虚 → 调 A::g()。g() 内调虚函数 `f()` → 动态类型 B → B::f()`B::f`
+| 调用 | 机制 | 输出 |
+| --- | --- | --- |
+| s.g() | B 无 g()，继承 A::g()。g() 非虚，调 A::g()。g() 内调虚函数 f() → 动态绑定到 B::f() | B::f |
+| t.g() | t 静态类型 A&，g() 非虚 → 调 A::g()。g() 内调虚函数 f() → 动态类型 B → B::f() | B::f |
+
+
 ##### 表二
 
 
-调用机制输出`s.g()`B 定义了 g()，隐藏 A::g()。s 静态类型 B → 调 B::g()。其内 f() 虚 → 动态绑定 B::f()`B::f``t.g()`t 静态类型 A&，g() 非虚 → 调 A::g()。其内 f() 虚 → 动态类型 B → B::f()`B::f`
+| 调用 | 机制 | 输出 |
+| --- | --- | --- |
+| s.g() | B 定义了 g()，隐藏 A::g()。s 静态类型 B → 调 B::g()。其内 f() 虚 → 动态绑定 B::f() | B::f |
+| t.g() | t 静态类型 A&，g() 非虚 → 调 A::g()。其内 f() 虚 → 动态类型 B → B::f() | B::f |
+
+
 ##### 表三
 
 
-调用机制输出`s.g()`g() 虚，B 重写。s 静态类型 B → B::g()。其内 f() **非虚**，B::f() 隐藏 A::f() → 静态调 B::f()`B::f``t.g()`t 静态类型 A&，g() 虚 → 动态类型 B → B::g()。其内 f() 非虚 → 静态调 B::f()`B::f`
+| 调用 | 机制 | 输出 |
+| --- | --- | --- |
+| s.g() | g() 虚，B 重写。s 静态类型 B → B::g()。其内 f() 非虚，B::f() 隐藏 A::f() → 静态调 B::f() | B::f |
+| t.g() | t 静态类型 A&，g() 虚 → 动态类型 B → B::g()。其内 f() 非虚 → 静态调 B::f() | B::f |
+
+
 **核心结论：** 三表殊途同归。无论 `g()` 和 `f()` 各自是否为虚函数，无论调用路径是静态绑定还是动态分发，最终都执行了 `B::f()`。这体现了 C++ 名字查找、静态绑定与动态绑定组合时的精妙语义——表三在 B::g() 中 f() 通过名字隐藏而非虚函数机制找到了 B::f()，体现了两种多态实现方式的"交集"。
 
 
