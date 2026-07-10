@@ -23,7 +23,8 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --no-frozen-lockfile
-      - run: pnpm build
+      - run: npx astro build
+      - run: npx pagefind --site dist || true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
