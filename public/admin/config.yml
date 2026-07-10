@@ -1,0 +1,24 @@
+backend:
+  name: github
+  repo: hestary/my-blog
+  branch: main
+  base_url: https://blog-oauth.vercel.app
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "posts"
+    label: "文章"
+    label_singular: "文章"
+    folder: "src/content/posts"
+    path: "{{slug}}/index"
+    create: true
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "published", widget: "date" }
+      - { label: "简介", name: "description", widget: "string", required: false }
+      - { label: "标签", name: "tags", widget: "list", default: ["技术"] }
+      - { label: "分类", name: "category", widget: "string", default: "技术" }
+      - { label: "草稿", name: "draft", widget: "boolean", default: false }
+      - { label: "正文", name: "body", widget: "markdown" }
