@@ -7,7 +7,6 @@ category: "算法进阶—进阶指南"
 draft: false
 ---
 
-## 
 
 令M=∏i=1nmiM= {\textstyle \prod_{i=1}^{n}}m_iM=∏i=1n​mi​,  ，Mi=MmiM_i=\frac{M}{m_i}Mi​=mi​M​ ,ti∗Mi≡1(mod  mi)t_i*M_i \equiv1(mod \ \ m_i )ti​∗Mi​≡1(mod  mi​)
 

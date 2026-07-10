@@ -7,7 +7,6 @@ category: "算法进阶—进阶指南"
 draft: false
 ---
 
-### 
 
 ` #include<algorithm>
  //对a中的从a.begin()（包括它）到a.end()（不包括它）的元素进行从小到大排列
@@ -77,7 +76,6 @@ a==b;
 
 `
 
-### 
 
 *
 
@@ -130,7 +128,6 @@ upper_bound()–返回大于某个值元素的迭代器
 value_comp()–返回一个用于比较元素间的值的函数
 `
 
-## 
 
 #include
 

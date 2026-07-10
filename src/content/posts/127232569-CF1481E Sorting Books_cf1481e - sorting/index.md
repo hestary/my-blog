@@ -7,11 +7,9 @@ category: "比赛"
 draft: false
 ---
 
-## 
 
 你现在要整理书架上的 nnn 本书，每本书有一个颜色 aia_iai​，当每种颜色的书都摆在一起时书架上便整齐了，你每次可以将一本书放到序列最右端，问使书架上整齐的最小操作数。
 
-## 
 
 容易得到，答案最大是nnn次，因为我们可以随意地操作序列nnn次，使序列从小到大就可以了，然后对于答案，我们就只需要求最多可以剩下几个书动，这样子ansansans就是nnn减去不移动的最大值。
 
@@ -26,7 +24,6 @@ cnt_i+f_{r[a[i]]+1} \quad\text{if \textcolor{orange}{i!=l[a[i]]}}
 \end{cases} 
 fi​=max⎩⎨⎧​fi+1​if i∈[1,n)cnti​if i=l[a[i]];cnti​+fr[a[i]]+1​if i!=l[a[i]]​
 
-## 
 
 `#include<bits/stdc++.h>
 #define I inline

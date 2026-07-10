@@ -7,11 +7,9 @@ category: "算法进阶—进阶指南"
 draft: false
 ---
 
-## 
 
 [参考](https://blog.csdn.net/weixin_44851176/article/details/104662539?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165873306616780366532994%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=165873306616780366532994&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-104662539-null-null.142%5Ev33%5Enew_blog_pos_by_title,185%5Ev2%5Etag_show&utm_term=%E5%B8%B8%E7%94%A8Fibonacci%E6%95%B0%E6%80%A7%E8%B4%A8&spm=1018.2226.3001.4187)
 
-### 
 
          F
 
@@ -64,7 +62,6 @@ draft: false
      F0=1,F1=1
  上述式子为定义式
 
-### 
 
          F
 
@@ -598,7 +595,6 @@ draft: false
 
     F1+F3+…+F2n−1=1+F0+F1+F2+…+F2n−3+F2n−2=1+F2n−1=F2n
 
-### 
 
         F
 
@@ -799,7 +795,6 @@ draft: false
 
     F0+F2…+F2n=F2n+2−F2n−1=F2n+1−1
 
-### 
 
         F
 
@@ -1027,11 +1022,9 @@ draft: false
 
     F20+F21+…+F2n−1+F2n=Fn−1Fn+F2n=FnFn+1
 
-### 
 
 从第二项开始，每个偶数项的平方都比前后两项之积多1，每个奇数项的平方都比前后两项之积少1。
 
-### 
 
 .
 
@@ -1190,7 +1183,6 @@ draft: false
 
     Fn+2=Fn+1+Fn=(Fn+Fn−1)+Fn=(Fn+(Fn−Fn−2))+Fn=3×Fn−Fn−2
 
-### 
 
         g
 
@@ -1346,7 +1338,6 @@ draft: false
 
     gcd(Fn+1,Fn)=gcd(Fn+1−Fn,Fn)=gcd(Fn,Fn−1)=gcd(F2,F1)=1
 
-### 
 
         F
 
@@ -1475,7 +1466,6 @@ draft: false
 
     Fm
 
-### 
 
         g
 
@@ -1668,7 +1658,6 @@ draft: false
 
     gcd(Fn+m,Fn)=gcd(Fn+1Fm+FnFm−1,Fn)=gcd(Fn+1Fm,Fn)=gcd(Fm,Fn)
 
-### 
 
         g
 

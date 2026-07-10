@@ -9,15 +9,11 @@ draft: false
 
 - 
 
-## 
-
-### 
 
 高斯消元法(Gaussian elimination)是求解线性方阵组的一种算法，它也可用来求矩阵的秩，以及求可逆方阵的逆矩阵。它通过逐步消除未知数来将原始线性系统转化为另一个更简单的等价的系统。它的实质是通过初等行变化(Elementary row operations)，将线性方程组的增广矩阵转化为行阶梯矩阵(row echelon form).
 
 ---
 
-### 
 
 求解形如
 
@@ -29,7 +25,6 @@ draft: false
 
 方程组
 
-### 
 
 先发现几个性质只要把方程组转化为：
 
@@ -48,7 +43,6 @@ draft: false
 - 将其他行的这一列的系数全部化为0（-它自己的系数）
 - 倒序三角形求答案
 
-### 
 
 `#include<bits/stdc++.h>
 #define I inline

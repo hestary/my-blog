@@ -7,7 +7,6 @@ category: "比赛"
 draft: false
 ---
 
-### 
 
 在这里插入图片描述![]\(https://i-blog.csdnimg.cn/blog_migrate/3ef92eeebe20400e92dc9ba1a96339b2.png#pic_center)![]\(https://i-blog.csdnimg.cn/blog_migrate/2fdf942aa1ae3e279d1cf4cca2b57934.png#pic_center)![]\(https://i-blog.csdnimg.cn/blog_migrate/7878a1e087cb8e533638833f7eefa3dc.png#pic_center)
 
@@ -42,7 +41,6 @@ int main()
 
 ---
 
-### 
 
 ![]\(https://i-blog.csdnimg.cn/blog_migrate/ac92868634b5820a4af05fce181d549a.png#pic_center)
 
@@ -86,7 +84,6 @@ int main()
 
 ---
 
-### 
 
 ![]\(https://i-blog.csdnimg.cn/blog_migrate/79631f00d1b51992881e5b32bfbda9e9.png#pic_center)
 
@@ -123,7 +120,6 @@ int main()
 
 ---
 
-### 
 
 **暴力dfs开始的人，在dfs下个人，方案数每次++**
 

@@ -9,15 +9,11 @@ draft: false
 
 - 
 
-## 
-
-### 
 
 树链剖分，指一种对树进行划分的算法，它先通过轻重边剖分将树分为多条链，保证每个点属于且只属于一条链，然后再通过数据结构（树状数组、BST、SPLAY、线段树等）来维护每一条链。
 
 ---
 
-### 
 
 LCA[学习资料](https://blog.csdn.net/yhhy666/article/details/118518817)
 - 树形DP
@@ -27,7 +23,6 @@ LCA[学习资料](https://blog.csdn.net/yhhy666/article/details/118518817)
 
 ---
 
-### 
 
 - 将树从
 
@@ -78,7 +73,6 @@ LCA[学习资料](https://blog.csdn.net/yhhy666/article/details/118518817)
 
 ---
 
-### 
 
 - 重儿子：对于每一个非叶子节点，它的儿子中结点数最多的儿子
 - 轻儿子：对于每一个非叶子节点，它的儿子中 非重儿子 的剩下所有儿子即为轻儿子
@@ -93,7 +87,6 @@ LCA[学习资料](https://blog.csdn.net/yhhy666/article/details/118518817)
  ![]\(https://i-blog.csdnimg.cn/blog_migrate/f6d1efab1e73fa5aa54e28f626144fd6.png)
  可以通过这张图看清楚定义
 
-### 
 
 将一条路径
 
@@ -310,7 +303,6 @@ LCA[学习资料](https://blog.csdn.net/yhhy666/article/details/118518817)
  不停执行这两个步骤，直到两个点处于一条链上，这时再加上此时两个点的区间和即可
  ![]\(https://i-blog.csdnimg.cn/blog_migrate/6163b5e1817ac5818927d9e0d5bc08fa.png)
 
-#### 
 
 在做之前我们可以要维护这7个数组
 
@@ -428,7 +420,6 @@ LCA[学习资料](https://blog.csdn.net/yhhy666/article/details/118518817)
 
      top[i]
 
-#### 
 
 `I void dfs1(int x,int father)
 {
@@ -447,8 +438,7 @@ LCA[学习资料](https://blog.csdn.net/yhhy666/article/details/118518817)
 }
 ` 
 
-#### 
- 
+
 注意在进行重新编号的时候先访问重链
  这样可以保证重链内的节点编号连续
  然后在最后搞的时候可以方便很多
@@ -469,8 +459,7 @@ LCA[学习资料](https://blog.csdn.net/yhhy666/article/details/118518817)
 }
 ` 
 
-#### 
- 
+
 `I LL ask(int x,int y)
 {
 	LL ans=0;
@@ -487,8 +476,7 @@ LCA[学习资料](https://blog.csdn.net/yhhy666/article/details/118518817)
 }
 ` 
 
-#### 
- 
+
 树链剖分修改区间的时候不能直接改，要边跳边改，因为这一段区间是有可能不连在一起的，一定要在跳的时候加上线段树的区间修改（我在这坑了一下午）
  
 `I void up(int x,int y,LL k)
@@ -506,8 +494,7 @@ LCA[学习资料](https://blog.csdn.net/yhhy666/article/details/118518817)
 }
 ` 
 
-### 
- 
+
 `#include<bits/stdc++.h>
 #define ls(x) x<<1
 #define rs(x) x<<1|1

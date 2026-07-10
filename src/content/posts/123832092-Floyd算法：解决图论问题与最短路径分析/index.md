@@ -7,9 +7,6 @@ category: "算法进阶—进阶指南"
 draft: false
 ---
 
-## 
-
-### 
 
 `//#include<bits/stdc++.h>   
 //#define mod 998244353
@@ -169,7 +166,6 @@ int main()
 }
 `
 
-### 
 
 `#include<bits/stdc++.h>   
 #define mod 998244353
@@ -252,9 +248,6 @@ int main()
 }
 `
 
-### 
-
-### 
 
 求从起点 S 到终点 E 恰好经过 N 条边（可以重复经过）的最短路。
 

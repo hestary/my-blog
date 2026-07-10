@@ -9,7 +9,6 @@ draft: false
 
 - 
 
-### 
 
 给定n个区间[li,ri][li,ri][li,ri]，你需要把它们划分成两部分A,B。
 
