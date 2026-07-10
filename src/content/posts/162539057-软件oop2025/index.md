@@ -470,7 +470,8 @@ public:
 #### 3.（2 分）
 
 
-`class A{
+`
+class A{
     int vala;
 public:
     virtual void set()=0;   // 纯虚函数，A是抽象类
@@ -481,7 +482,9 @@ class B: public A{
 public:
     void set(){cin>>valb;}
 };
+
 `
+
 **错误：** A 声明了纯虚函数 `set()=0`，是抽象类，不能实例化。B 中的成员 `A s;` 试图直接创建 A 的对象，这是一个编译错误。抽象类只能作为指针或引用的类型。
 
 
@@ -494,7 +497,7 @@ public:
 #### 4.（4 分，2 处错误）
 
 
-`class A{
+```class A{
     int x;
 public:
     A(int s = 0){ x = s; }
@@ -506,7 +509,7 @@ public:
     B(int t = 0):A(t),y(t){}
     void n(){cout<<x<<y<<endl;}      // 错误2
 };
-`
+```
 **错误 1：** `static void m()` 是静态成员函数，没有 `this` 指针，不能访问非静态数据成员 `x`。静态函数中只能访问静态成员。
 
 
@@ -516,7 +519,7 @@ public:
 **改正：**
 
 
-`class A {
+```class A {
     int x;
 public:
     A(int s = 0) { x = s; }
@@ -528,7 +531,7 @@ protected:
 // B::n() 改为：
 void n() { cout << getX() << y << endl; }
 // 或将 class A 中的 x 改为 protected
-`
+```
 
 ---
 
@@ -586,8 +589,7 @@ public:
     }
 };
 
-int Set::nextId = 0;
-`
+int Set::nextId = 0; 
 ```
 
 **设计说明：**
@@ -787,5 +789,5 @@ B::f
 
 ---
 
-
+修改
 *（卷终）*
