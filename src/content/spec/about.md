@@ -1,9 +1,13 @@
-# About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
+# 关于我
 
-::github{repo="saicaca/fuwari"}
+你好！我是 hestary，一个热爱技术和分享的人。
 
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
+这个博客是我在互联网上的一个小角落，用来记录学到的知识、踩过的坑和一些生活中的感悟。
+
+之前的内容在 CSDN 上，现在逐步迁移到这里，希望能有一个更干净、更自由的写作空间。
+
+## 联系我
+
+- GitHub: [hestary](https://github.com/hestary)
+
+> 种一棵树最好的时间是十年前，其次是现在。
